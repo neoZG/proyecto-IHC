@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameStartMenu : MonoBehaviour
 {
@@ -43,7 +44,8 @@ public class GameStartMenu : MonoBehaviour
     public void StartGame()
     {
         HideAll();
-        SceneTransitionManager.singleton.GoToSceneAsync(1);
+        // SceneTransitionManager.singleton.GoToSceneAsync(1);
+        SceneManager.LoadScene(1);
     }
 
     public void HideAll()

@@ -5824,7 +5824,7 @@ GameObject:
   - component: {fileID: 4134505311032341761}
   m_Layer: 0
   m_Name: Simple XR Player with Ray Interactor
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
