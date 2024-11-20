@@ -74,14 +74,14 @@ public class ObjectCounter : MonoBehaviour
 
     public void OnObjectGrabbed(XRBaseInteractable interactable)
     {
-        Debug.Log($"***Entered OnObjectGrabbed function");
+        Debug.Log($"Entered OnObjectGrabbed function");
         GameObject grabbedObject = interactable.gameObject;
-        Debug.Log($"***Grabbed: {grabbedObject.name}");
+        Debug.Log($"Grabbed: {grabbedObject.name}");
 
         // Add to collection if not already collected
         if (grabbedObject.CompareTag("Collectible") && !collectedObjects.Contains(grabbedObject))
         {
-            Debug.Log($"***ON IT");
+            Debug.Log($"ON IT");
             collectedObjects.Add(grabbedObject);
             IncreaseCounter();
             AddToMenu(grabbedObject.name);
@@ -93,7 +93,7 @@ public class ObjectCounter : MonoBehaviour
         GameObject releasedObject = interactable.gameObject;
 
         // Optional: Log the release
-        Debug.Log($"***Released: {releasedObject.name}");
+        Debug.Log($"Released: {releasedObject.name}");
     }
 
     private void IncreaseCounter()
@@ -111,12 +111,12 @@ public class ObjectCounter : MonoBehaviour
 
     private void UpdateText()
     {
-        _text.text = $"***Collected: {_objectCounter}";
+        _text.text = $"Collected: {_objectCounter}";
     }
 
     private void AddToMenu(string objectName)
     {
-        Debug.Log($"***Added {objectName} to menu");
+        Debug.Log($"Added {objectName} to menu");
         // Logic to update the menu UI with the object's name
     }
 }
