@@ -289,7 +289,6 @@ GameObject:
   m_Component:
   - component: {fileID: 184885874}
   - component: {fileID: 184885873}
-  - component: {fileID: 184885875}
   m_Layer: 0
   m_Name: BackgroundMusic
   m_TagString: Untagged
@@ -307,11 +306,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9ff8c99ccbe0e8f489123e5a1d3a49a4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 48cf0e6976e1eb64ea387e12b8dbe0bf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.505
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -408,18 +407,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &184885875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184885872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c19afeb27f2e8374e938c7376a819203, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &189759098
 GameObject:
   m_ObjectHideFlags: 0
@@ -5888,7 +5875,7 @@ MonoBehaviour:
   m_Camera: {fileID: 9014170783998532098}
   m_OriginBaseGameObject: {fileID: 7696548424714519384}
   m_CameraFloorOffsetObject: {fileID: 9014170784076170791}
-  m_RequestedTrackingOriginMode: 2
+  m_RequestedTrackingOriginMode: 1
   m_CameraYOffset: 1.36144
 --- !u!114 &7873184977557373658
 MonoBehaviour:

@@ -141,14 +141,93 @@
 
 
 
+// using System.Collections.Generic;
+// using UnityEngine;
+// using UnityEngine.InputSystem;
+
+// public class WristUI : MonoBehaviour
+// {
+//     public InputActionAsset inputActions;
+//     public Canvas wristUICanvas;
+
+//     private InputAction _menu;
+//     private InputAction _toggleObjects;
+
+//     // List of objects to activate/deactivate
+//     public List<GameObject> objectsToToggle = new List<GameObject>();
+//     private bool objectsAreActive = true;
+
+//     // List of collected objects
+//     private List<string> collectedObjects = new List<string>();
+//     public UnityEngine.UI.Text collectedObjectsText;  // UI element to display collected items
+
+//     private void Start()
+//     {
+//         wristUICanvas.enabled = false;  // Start with UI hidden
+//         _menu = inputActions.FindActionMap("XRI LeftHand").FindAction("Menu");
+//         _toggleObjects = inputActions.FindActionMap("XRI LeftHand").FindAction("ToggleObjects");
+//         _menu.Enable();
+//         _menu.performed += ToggleMenu;
+//     }
+
+//     private void OnDestroy()
+//     {
+//         _menu.performed -= ToggleMenu;
+//     }
+
+//     public void ToggleMenu(InputAction.CallbackContext context)
+//     {
+//         wristUICanvas.enabled = !wristUICanvas.enabled;  // Toggle UI visibility
+//     }
+
+//     public void ToggleObjects()
+//     {
+//         objectsAreActive = !objectsAreActive;
+
+//         foreach (var obj in objectsToToggle)
+//         {
+//             if (obj != null)
+//             {
+//                 obj.SetActive(objectsAreActive);
+//             }
+//         }
+//     }
+
+//     public void CollectObject(string objectName)
+//     {
+//         if (!collectedObjects.Contains(objectName))
+//         {
+//             collectedObjects.Add(objectName);
+//             UpdateCollectedObjectsUI();
+//         }
+//     }
+
+//     private void UpdateCollectedObjectsUI()
+//     {
+//         collectedObjectsText.text = "Collected Items:\n" + string.Join("\n", collectedObjects);
+//     }
+
+//     private void OnTriggerEnter(Collider other)
+//     {
+//         // Example of collecting an object when it enters the trigger
+//         if (other.CompareTag("Collectible"))
+//         {
+//             CollectObject(other.gameObject.name);
+//             Destroy(other.gameObject);  // Optionally destroy the collected object
+//         }
+//     }
+// }
+
+
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WristUI : MonoBehaviour
 {
-    public InputActionAsset inputActions;
-    public Canvas wristUICanvas;
+    public InputActionAsset inputActions; // in order to use the menu button to access this menu (every menu should have it)
+    public Canvas wristUICanvas; // make the menu visible (every menu should have it)
 
     private InputAction _menu;
     private InputAction _toggleObjects;
@@ -163,7 +242,7 @@ public class WristUI : MonoBehaviour
 
     private void Start()
     {
-        wristUICanvas.enabled = false;  // Start with UI hidden
+        wristUICanvas.enabled = true;  // Start with UI visible
         _menu = inputActions.FindActionMap("XRI LeftHand").FindAction("Menu");
         _toggleObjects = inputActions.FindActionMap("XRI LeftHand").FindAction("ToggleObjects");
         _menu.Enable();
@@ -176,6 +255,12 @@ public class WristUI : MonoBehaviour
     }
 
     public void ToggleMenu(InputAction.CallbackContext context)
+    {
+        wristUICanvas.enabled = !wristUICanvas.enabled;  // Toggle UI visibility
+    }
+
+    // Modified ToggleMenu method to work with Button click
+    public void ToggleMenu()
     {
         wristUICanvas.enabled = !wristUICanvas.enabled;  // Toggle UI visibility
     }
