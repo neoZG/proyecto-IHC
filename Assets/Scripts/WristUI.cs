@@ -226,8 +226,8 @@ using UnityEngine.InputSystem;
 
 public class WristUI : MonoBehaviour
 {
-    public InputActionAsset inputActions;
-    public Canvas wristUICanvas;
+    public InputActionAsset inputActions; // in order to use the menu button to access this menu (every menu should have it)
+    public Canvas wristUICanvas; // make the menu visible (every menu should have it)
 
     private InputAction _menu;
     private InputAction _toggleObjects;

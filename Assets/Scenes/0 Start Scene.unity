@@ -310,7 +310,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.505
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5875,7 +5875,7 @@ MonoBehaviour:
   m_Camera: {fileID: 9014170783998532098}
   m_OriginBaseGameObject: {fileID: 7696548424714519384}
   m_CameraFloorOffsetObject: {fileID: 9014170784076170791}
-  m_RequestedTrackingOriginMode: 2
+  m_RequestedTrackingOriginMode: 1
   m_CameraYOffset: 1.36144
 --- !u!114 &7873184977557373658
 MonoBehaviour:
