@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Inventory
-  - Collectible
   layers:
   - Default
   - TransparentFX

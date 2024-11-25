@@ -242,6 +242,7 @@ public class WristUI : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1; // Ensure the game is not paused
         wristUICanvas.enabled = true;  // Start with UI visible
         _menu = inputActions.FindActionMap("XRI LeftHand").FindAction("Menu");
         _toggleObjects = inputActions.FindActionMap("XRI LeftHand").FindAction("ToggleObjects");
@@ -251,8 +252,13 @@ public class WristUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        _menu.performed -= ToggleMenu;
+        // Check if _menu is assigned before unsubscribing
+        if (_menu != null)
+        {
+            _menu.performed -= ToggleMenu;
+        }
     }
+
 
     public void ToggleMenu(InputAction.CallbackContext context)
     {
