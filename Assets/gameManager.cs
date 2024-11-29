@@ -206,17 +206,20 @@ public class GameManager : MonoBehaviour
     // Countdown coroutine to restart the scene
     IEnumerator StartCountdownToRetry()
     {
-        float countdown = 10f; // Start countdown from 10 seconds
+        float countdown = 10f;
 
         while (countdown > 0)
         {
-            countdownText.text = "Reiniciando en: " + Mathf.Ceil(countdown); // Display countdown
-            countdown -= Time.deltaTime; // Decrease countdown
+            if (countdownText != null)
+                countdownText.text = "Reiniciando en: " + Mathf.Ceil(countdown);
+
+            countdown -= Time.deltaTime;
             yield return null;
         }
 
-        Time.timeScale = 1f; // Ensure time scale is reset to normal
-        RetryLevel(); // Restart the current level
+        Time.timeScale = 1f;
+        StopAllCoroutines(); // Stop all coroutines to avoid lingering references
+        RetryLevel();
     }
 
     // Method to restart the current level
@@ -244,7 +247,7 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject obj in allObjects)
         {
-            if (obj != this.gameObject) // Don't destroy the GameManager itself
+            if (obj != this.gameObject && obj != gameOverCanvas && obj != redOverlayCanvas) 
             {
                 Destroy(obj);
             }
