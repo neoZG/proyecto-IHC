@@ -4,19 +4,27 @@ using System;
 public class CoinCollectible : MonoBehaviour
 {
     public static event Action OnCollected;
-    public AudioClip collectSound;  // The sound to play when collected
+    public AudioClip collectSound; // The sound to play when collected
     public static int total;
-    private AudioSource audioSource;
-
 
     [Header("Rotation Settings")]
     public Vector3 rotationAxis = Vector3.up; // Default rotation axis (Y-axis)
     public float rotationSpeed = 100f;        // Speed of rotation
 
+    private static AudioSource globalAudioSource;
+
     void Awake()
     {
         total++;
-        audioSource = gameObject.AddComponent<AudioSource>();
+        
+        // Find or create a global AudioSource if not already available
+        if (globalAudioSource == null)
+        {
+            GameObject audioSourceObject = new GameObject("GlobalAudioSource");
+            globalAudioSource = audioSourceObject.AddComponent<AudioSource>();
+            globalAudioSource.playOnAwake = false;
+            DontDestroyOnLoad(audioSourceObject); // Persist through scenes
+        }
     }
 
     void Update()
@@ -29,9 +37,14 @@ public class CoinCollectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            audioSource.PlayOneShot(collectSound);
+            // Play sound using the global audio source
+            if (collectSound != null && globalAudioSource != null)
+            {
+                globalAudioSource.PlayOneShot(collectSound);
+            }
+
             OnCollected?.Invoke();
-            Destroy(gameObject);
+            Destroy(gameObject); // Destroy the collectible
         }
     }
 }

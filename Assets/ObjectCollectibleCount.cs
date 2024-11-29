@@ -1,3 +1,94 @@
+// using System.Collections;
+// using UnityEngine;
+// using TMPro;
+// using UnityEngine.SceneManagement;
+// using System.Collections.Generic;
+
+// public class ObjectCollectibleCount : MonoBehaviour
+// {
+//     // Static dictionary to store counts for each object type
+//     public static Dictionary<ObjectType, int> objectCounts = new Dictionary<ObjectType, int>();
+
+//     // Dictionary to store the maximum object count for each object type
+//     public static Dictionary<ObjectType, int> maxObjects = new Dictionary<ObjectType, int>();
+
+//     TMPro.TMP_Text text; // Reference to the TMP_Text component
+
+//     void Awake()
+//     {
+//         text = GetComponent<TMPro.TMP_Text>();
+
+//         // Reset counts when the scene is loaded
+//         SceneManager.sceneLoaded += OnSceneLoaded;
+//     }
+
+//     void Start()
+//     {
+//         UpdateCount(ObjectType.Quipu); // Start by showing count for Quipu
+//     }
+
+//     void OnEnable()
+//     {
+//         ObjectCollectible.OnCollected += OnCollectibleCollected;
+//     }
+
+//     void OnDisable()
+//     {
+//         ObjectCollectible.OnCollected -= OnCollectibleCollected;
+//     }
+
+//     // This method will be called when an object is collected
+//     void OnCollectibleCollected(ObjectType objectType)
+//     {
+//         if (objectCounts.ContainsKey(objectType))
+//         {
+//             objectCounts[objectType]++;
+//         }
+//         else
+//         {
+//             objectCounts[objectType] = 1; // Initialize count for new object type
+//         }
+
+//         UpdateCount(objectType); // Update the UI for the specific object type
+//     }
+
+//     // This method updates the UI text to display the current and total count
+//     void UpdateCount(ObjectType objectType)
+//     {
+//         // Check if the object type has a max count set
+//         if (maxObjects.ContainsKey(objectType))
+//         {
+//             int max = maxObjects[objectType];
+//             text.text = $"{objectCounts[objectType]} / {max} {objectType.ToString()}"; // Display count for specific object type
+//         }
+//     }
+
+//     // Reset the object counts when a new scene is loaded
+//     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+//     {
+//         objectCounts.Clear(); // Reset object counts for all types
+//         UpdateCount(ObjectType.Quipu); // Optionally set which object to display first, or update all
+//     }
+
+//     // Optionally, you can expose a method to change the max object count dynamically if needed
+//     public void SetMaxObjects(ObjectType objectType, int max)
+//     {
+//         if (!maxObjects.ContainsKey(objectType))
+//         {
+//             maxObjects[objectType] = max; // Set the max objects for the type
+//         }
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -48,7 +139,7 @@ public class ObjectCollectibleCount : MonoBehaviour
     // This method updates the UI text to display the current and total count
     void UpdateCount()
     {
-        text.text = $"{objectCount} / {maxObjects} objetos"; // Use maxObjects for the hardcoded max amount
+        text.text = $"Disco Solar {objectCount} / {maxObjects}"; // Use maxObjects for the hardcoded max amount
     }
 
     // Reset the object count when a new scene is loaded
@@ -67,98 +158,3 @@ public class ObjectCollectibleCount : MonoBehaviour
 }
 
 
-
-
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// public class ObjectCollectibleCount : MonoBehaviour
-// {
-//     TMPro.TMP_Text text;
-//     int count;
-
-//     void Awake()
-//     {
-//         text = GetComponent<TMPro.TMP_Text>();
-//     }
-
-//     void Start() // Fixed capitalization
-//     {
-//         UpdateCount(); // Fixed capitalization for consistency
-//     }
-
-//     void OnEnable()
-//     {
-//         ObjectCollectible.OnCollected += OnCollectibleCollected;
-//     }
-
-//     void OnDisable()
-//     {
-//         ObjectCollectible.OnCollected -= OnCollectibleCollected;
-//     }
-
-//     void OnCollectibleCollected()
-//     {
-//         count++;
-//         UpdateCount();
-//     }
-
-//     void UpdateCount() // Fixed capitalization for consistency
-//     {
-//         text.text = $"{count} / {ObjectCollectible.total} objetos";
-//     }
-// }
-
-
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// public class CoinCollectibleCount : MonoBehaviour
-// {
-//     [Header("UI Elements")]
-//     public TMPro.TMP_Text coinText;
-//     public TMPro.TMP_Text objectText;
-
-//     private Dictionary<CollectibleType, int> countByType = new Dictionary<CollectibleType, int>();
-
-//     void Awake()
-//     {
-//         // Initialize counts for all types
-//         foreach (CollectibleType type in System.Enum.GetValues(typeof(CollectibleType)))
-//         {
-//             countByType[type] = 0;
-//         }
-//     }
-
-//     void Start()
-//     {
-//         UpdateUI();
-//     }
-
-//     void OnEnable()
-//     {
-//         ObjectCollectible.OnCollected += OnCollectibleCollected;
-//     }
-
-//     void OnDisable()
-//     {
-//         ObjectCollectible.OnCollected -= OnCollectibleCollected;
-//     }
-
-//     void OnCollectibleCollected(CollectibleType type)
-//     {
-//         if (countByType.ContainsKey(type))
-//         {
-//             countByType[type]++;
-//         }
-//         UpdateUI();
-//     }
-
-//     void UpdateUI()
-//     {
-//         // Update each UI element with the counts
-//         coinText.text = $"monedas: {countByType[CollectibleType.Coin]} / {CoinCollectible.totalByType[CollectibleType.Coin]}";
-//         objectText.text = $"objetos: {countByType[CollectibleType.Object]} / {ObjectCollectible.totalByType[CollectibleType.Object]}";
-//     }
-// }

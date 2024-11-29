@@ -47,7 +47,7 @@ public class CoinCollectibleCount : MonoBehaviour
     // This method updates the UI text to display the current and total count
     void UpdateCount()
     {
-        text.text = $"{coinCount} / {maxCoins} monedas"; // Use maxCoins for the hardcoded max amount
+        text.text = $"Monedas: {coinCount} / {maxCoins}"; // Use maxCoins for the hardcoded max amount
     }
 
     // Reset the coin count when a new scene is loaded
